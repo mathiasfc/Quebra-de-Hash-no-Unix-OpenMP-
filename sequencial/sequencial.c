@@ -90,7 +90,7 @@ int main() {
         key[j] = '\0';
 
         // Is this key the encrypted password?
-        if (strcmp(hash_to_search,crypt_r(key,salt,&data))==0){
+        if (strcmp(hash_to_search, crypt_r(key,salt,&data))==0){
           fprintf(stderr,"Found password=%s\n",key);
           break;
         }
@@ -102,7 +102,7 @@ int main() {
         vai_um = 1;
         while (pos >= 0 && vai_um) {
               indChars[pos]++;
-               if (pos==0) { /*printf(".");*/ fflush(stdout); }
+               if (pos==0) { printf("."); fflush(stdout); }
               if (indChars[pos]==num_valid_chars) {
                  indChars[pos] = 0; 
                  --pos;
@@ -110,14 +110,14 @@ int main() {
               else
                  vai_um = 0;
         }
-      printf("%s", key);
-      printf("\n");
+      //printf("%s", key);
+      //printf("\n");
       } while (pos >= 0);
 
     
-    if(num_chars == 2){
+    /*if(num_chars == 2){
       break;
-    }
+    }*/
        printf("\n");
   }
 
