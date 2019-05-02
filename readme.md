@@ -37,7 +37,7 @@ scp -r  /home/PORTOALEGRE/13104495/DriveH/PP/Quebra-de-Hash-no-Unix-OpenMP-/ pp1
 
 Sequencial(s):
 
-129.78 / 138.23 / 180.44 / 114.67 / 110.57
+129.78 / 138.23 / 180.44 / 143.12 / 114.67 / 110.57
 
 Paralelo Cluster(s):
 

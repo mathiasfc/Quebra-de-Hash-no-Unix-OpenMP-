@@ -80,7 +80,7 @@ int CheckHash(char prefix[], struct crypt_data data)
     return false;
 }
 
-void buildNextKey(int step, char init[], struct crypt_data *data)
+void nextCombination(int step, char init[], struct crypt_data *data)
 {
     step += 1;
     bool inRange = step <= MAX_CHARS;
@@ -96,7 +96,7 @@ void buildNextKey(int step, char init[], struct crypt_data *data)
                 found_hash = true;
             }
             DEBUG_MODE ? fprintf(stderr, "Checking: %s...\n", init) : 0;
-            buildNextKey(step, init, data);
+            nextCombination(step, init, data);
         }
     }
 }
@@ -117,7 +117,7 @@ int main()
     salt[2] = '\0';
 
     int i;
-#pragma omp parallel for
+    #pragma omp parallel for
     for (i = 0; i < num_valid_chars; i++)
     {
         struct crypt_data data;
@@ -125,7 +125,7 @@ int main()
         char init[MAX_CHARS];
         init[0] = valid_chars[i];
         strcmp(hash_to_search, crypt_r(init, salt, &data));
-        buildNextKey(1, init, &data);
+        nextCombination(1, init, &data);
     }
 
     // MOSTRA O TEMPO DE EXECUCAO
